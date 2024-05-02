@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+    stages{
+        stage('Checkout'){
+            steps{
+                git branch: 'main', url: 'https://github.com/Vedanti181/Exp4.git'
+            }
+        }
+        stage('Build'){
+            steps{
+                echo 'building...'
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo 'deploying...'
+                bat "xcopy /Y /I /E /F /C *.html C:\\xampp\\htdocs"
+            }
+        }
+        
+    }
+}
